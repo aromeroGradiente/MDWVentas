@@ -1,0 +1,59 @@
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+
+      <div class="inner cover text-center login-body">
+
+        <div class="container-logo pt-2">
+          <img src="assets/img/logo-caserita.jpg" class="" />
+        </div>
+
+        <h1>Administración APP Ventas</h1>
+        <form 
+          [formGroup]="loginForm" 
+          class="mt-0 login-form" 
+          (ngSubmit)="submitForm()">
+          
+          <fieldset [disabled]="isSubmitting">
+            <div class="form-group p-4 mb-0 login-form-body">
+
+              <input 
+                formControlName="username"
+                placeholder="Nombre de Usuario"
+                class="form-control mb-1 p-1 user-input"
+                type="text"/>
+              <!-- div [hidden]="loginForm.username.valid || loginForm.username.pristine" 
+                    class="alert alert-danger" 
+                    role="alert">
+                <strong>Usuario</strong> no puede ser vacío.
+              </div-- >
+              <!-- div class="alert alert-danger" *ngIf="loginForm.submitted && !loginForm.controls['username'].valid">Usuario no puede ser vacío</div -->    
+              <input 
+                formControlName="password" 
+                placeholder="Contraseña" 
+                class="form-control p-1 mb-0 pass-input" 
+                required="required"
+                type="password" />
+                <!-- div class="alert alert-danger" *ngIf="loginForm.submitted && !loginForm.controls['username'].valid">Password no puede ser vacío</div-->    
+
+            </div>
+            <div class="form-group p-0 mb-3">
+              <!-- input 
+                type="submit" 
+                class="form-control p-1 login-btn" 
+                [disabled]="!loginForm.valid"
+                value="Entrar" / -->
+              <input 
+                type="submit" 
+                class="form-control p-1 login-btn" 
+                value="Entrar" />
+            </div>
+          </fieldset>
+        </form>
+        <app-list-errors [errors]="errors"></app-list-errors>
+        <!-- p class="footer-credit">2017 © La Caserita.</p -->
+      </div>
+
+    </div>
+  </div>
+</div>

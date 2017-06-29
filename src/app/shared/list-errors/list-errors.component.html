@@ -1,0 +1,15 @@
+<div class="error-messages" *ngIf="errorList">
+  <div *ngFor="let error of errorList">
+
+    <div class="alert alert-danger" role="alert" *ngIf="error.code === 0">
+      <strong>Error al conectar</strong> al servicio de login.
+      <div *ngIf="error.message"> <strong>Detalle:</strong> {{ error.message }}</div> 
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="error.code === 2020 || error.code === 2010">
+      El <strong>nombre de usuario</strong> o la <strong>contraseña</strong> son incorrectos.
+      <br>
+      <div *ngIf="error.message"> <strong>Detalle:</strong> {{ error.message }}</div> 
+    </div>
+  </div>
+</div>
