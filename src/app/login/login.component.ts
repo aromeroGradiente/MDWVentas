@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.userService
         .attemptAuth(credentials)
         .subscribe(
-          data => this.router.navigateByUrl('/'),
+          data => this.router.navigateByUrl('/trabajar-con-vendedores'),
           err => {
             this.errors = err;
             this.isSubmitting = false;

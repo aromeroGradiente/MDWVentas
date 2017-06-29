@@ -15,7 +15,8 @@ import { ApiService } from './shared/services/api.service'
 import { JwtService } from './shared/services/jwt.service'
 import { UserService } from './shared/services/user.service'
 import { AuthGuard } from './shared/services/auth-guard.service';
-import { ListErrorsComponent } from './shared/list-errors/list-errors.component'
+import { ListErrorsComponent } from './shared/list-errors/list-errors.component';
+import { VendedoresComponent } from './vendedores/vendedores.component'
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ListErrorsComponent } from './shared/list-errors/list-errors.component'
     FooterComponent,
     SidebarComponent,
     LoginComponent,
-    ListErrorsComponent
+    ListErrorsComponent,
+    VendedoresComponent
   ],
   imports: [
     BrowserModule,

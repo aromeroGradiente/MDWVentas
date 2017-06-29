@@ -1,0 +1,127 @@
+<article class="content dashboard-page">
+
+  <section class="section">
+    <div class="row sameheight-container">
+
+      <div class="col col-xs-12 col-sm-12 col-md-12 col-xl-12">
+
+        <div class="title-block">
+          <h4 class="title">Home</h4>
+
+          <nav class="breadcrumb">
+            <span class="breadcrumb-item active">Home</span>
+          </nav>
+
+        </div>
+
+        <div class="card card-block mb-3">
+          <form role="form">
+            <div class="form-group col-xl-4">
+              <label for="bodega" class="w-100">Bodega</label>
+
+              <select class="selectpicker w-100">
+                                              <option>Todos</option>
+                                              <option>Bodega 1</option>
+                                              <option>Bodega 2</option>
+                                              <option>Bodega 3</option>
+                                              <option>Bodega 4</option>
+                                              <option>Bodega 5</option>
+                                              <option>Bodega 6</option>
+                                            </select>
+            </div>
+            <div class="form-group col-xl-4">
+              <label for="bodega" class="w-100">Tipo de Vendedor</label>
+
+              <select class="selectpicker w-100">
+                                              <option>Todos</option>
+                                              <option>Tipo 2000</option>
+                                              <option>Tipo 3000</option>
+                                              <option>Tipo 4000</option>
+                                              <option>Tipo FERIAS</option>
+                                              <option>Tipo 6000</option>
+                                            </select>
+            </div>
+            <div class="form-group col-xl-4"> <label for="rut">Rut</label> <input type="text" class="form-control w-100" id="rut" placeholder=""> </div>
+            <div class="form-group col-xl-4"> <label for="bodega">Nombre</label> <input type="text" class="form-control" id="bodega" placeholder=""> </div>
+            <div class="form-group col-xl-4"> <label for="tipoVendedor">PIN</label> <input type="text" class="form-control" id="tipoVendedor" placeholder="">              </div>
+            <div class="form-group col-xl-4 big-check">
+              <label for="rut">Solo PIN</label>
+              <div>
+                <label>
+                                                    <input class="checkbox" type="checkbox">
+                                                    <span>&nbsp;</span>
+                                                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="w-100 text-right" style="text-align:right">
+          <a id="check-all" href="" data-checked="false" class="btn rounded w-10 btn-primary white mb-2">
+                                        Seleccionar todos
+                                    </a>
+        </div>
+
+        <div class="card rounded">
+          <table class="table  table-responsive" id="no-more-tables">
+            <thead>
+              <tr>
+                <th class="numeric"></th>
+                <th class="numeric">COD.</th>
+                <th class="numeric">RUT</th>
+                <th class="numeric">Nombre</th>
+                <th class="numeric">Clientes</th>
+                <th class="numeric">Visitas</th>
+                <th class="numeric">Bodega</th>
+                <th class="numeric">Tipo</th>
+                <th class="numeric">% Desc 1</th>
+                <th class="numeric">% Desc 2</th>
+                <th class="numeric">PIN</th>
+                <th class="numeric">Ver. App</th>
+                <th class="numeric">Últ. Acceso</th>
+                <th class="numeric">Últ. Cierre</th>
+                <th class="numeric">Prox. Cierre</th>
+                <th class="numeric">Actualizar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-title=""><a href="informacion-vendedor.php"><i class="fa fa-pencil"></i></a></td>
+                <td data-title="COD.">7</td>
+                <td data-title="RUT">11627506-6</td>
+                <td data-title="Nombre">LUCY GONZALEZ PALMA</td>
+                <td data-title="Clientes">1</td>
+                <td data-title="Visitas">3</td>
+                <td data-title="Bodega"><a href="informacion-bodega.php" class="no-bg"> Bodega 1</a></td>
+                <td data-title="Tipo"><a href="informacion-tipo-vendedor.php" class="no-bg">Tipo 2000</a></td>
+                <td data-title="& Desc 1">40,00</td>
+                <td data-title="% Desc 2">40,00</td>
+                <td data-title="PIN">–</td>
+                <td data-title="Ver. App">–</td>
+                <td data-title="Últ. Acceso">00:00:00</td>
+                <td data-title="Últ. Cierre">06/03/17</td>
+                <td data-title="Prox. Cierre">07/03/17</td>
+                <td data-title="Actualizar">
+                  <div class="form-group col-xl-4">
+                    <div>
+                      <label>
+                                                                <input class="checkbox" type="checkbox">
+                                                                <span>&nbsp;</span>
+                                                            </label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <a id="notificar" href="" class="btn rounded w-10 btn-primary white">
+                                    Guardar selección de vendedores a notificar
+                                </a>
+
+      </div>
+    </div>
+  </section>
+
+</article>
