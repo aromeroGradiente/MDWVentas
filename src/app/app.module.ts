@@ -11,12 +11,16 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
+import { ListErrorsComponent } from './shared/list-errors/list-errors.component';
+import { VendedoresComponent } from './vendedores/vendedores.component'
+
 import { ApiService } from './shared/services/api.service'
 import { JwtService } from './shared/services/jwt.service'
 import { UserService } from './shared/services/user.service'
 import { AuthGuard } from './shared/services/auth-guard.service';
-import { ListErrorsComponent } from './shared/list-errors/list-errors.component';
-import { VendedoresComponent } from './vendedores/vendedores.component'
+import { VendedorService } from './shared/services/vendedor.service';
+import { VendedorTipoService } from './shared/services/vendedor-tipo.service';
+import { BodegaService } from './shared/services/bodega.service';
 
 
 @NgModule({
@@ -36,7 +40,16 @@ import { VendedoresComponent } from './vendedores/vendedores.component'
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ApiService, JwtService, UserService, AuthGuard],
+  providers:
+    [
+        ApiService,
+        JwtService,
+        UserService,
+        AuthGuard,
+        VendedorService,
+        BodegaService,
+        VendedorTipoService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.jwtService.getToken()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/trabajar-con-vendedores']);
     }
   }
 
