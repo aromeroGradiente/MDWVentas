@@ -16,6 +16,7 @@ export class VendedorService {
     ) { }
 
     getAll(): Observable<Vendedor[]> {
+        // TODO Cambiar ruta en phalcon
         return this.apiService.get(`/vendedores?per_page=5000`)
             .map(response => {
                 return response.data.vendedores;
