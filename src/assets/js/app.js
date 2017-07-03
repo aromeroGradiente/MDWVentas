@@ -103,24 +103,24 @@ $(function() {
 //LoginForm validation
 $(function() {
     
-    /*if ($('#check-all').length > 0) {
+    //if ($('#check-all').length > 0) {
         $('#check-all').click(function (e) {
             $(this).toggleClass('active');
             e.preventDefault();
-            var checkBoxes = $("table td .form-group input");
-            checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+            // var checkBoxes = $("table td .form-group input");
+            // checkBoxes.prop("checked", !checkBoxes.prop("checked"));
             if($(this).hasClass('active')){
               $('#check-all').text('DESELECCIONAR TODOS');
-                $('#notificar').removeClass('disabled');
-                $('#notificar').addClass('enabled');
+                // $('#notificar').removeClass('disabled');
+                // $('#notificar').addClass('enabled');
             } else {
               $('#check-all').text('SELECCIONAR TODOS');
-              $('#notificar').removeClass('enabled');
-              $('#notificar').addClass('disabled');
+              // $('#notificar').removeClass('enabled');
+              // $('#notificar').addClass('disabled');
             }
         });
-    }
-    
+    //}
+    /*
     if ($('#notificar').length > 0) {
         if($('table .form-group input[type=checkbox]:checked').length > 0){
               $('#notificar').removeClass('disabled');
