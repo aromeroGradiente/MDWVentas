@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { VendedorService } from '../shared/services/vendedor.service';
 import { VendedorTipoService } from '../shared/services/vendedor-tipo.service';
 import { BodegaService } from '../shared/services/bodega.service';
+import { PagerService } from '../shared/services/pager.service';
 
 import { VendedorTipo } from '../shared/models/vendedor-tipo.model';
 import { Vendedor } from '../shared/models/vendedor.model';
@@ -39,6 +40,12 @@ export class VendedoresComponent implements OnInit {
     dispositivo_pin: 0
   }
 
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any[];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -46,7 +53,8 @@ export class VendedoresComponent implements OnInit {
     private vendedorTipoService: VendedorTipoService,
     private bodegaService: BodegaService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private pagerService: PagerService
   ) { }
 
 
@@ -55,8 +63,9 @@ export class VendedoresComponent implements OnInit {
     // Se obtienen los vendedores
     this.vendedorService.getAll()
       .subscribe(vendedores => {
-        this.vendedores = vendedores.slice(0, 50);
+        this.vendedores = vendedores; // .slice(0, 50);
         this.vendedoresFiltrados = this.vendedores;
+        this.setPage(1);
       });
 
     // Se obtienen los tipos de vendedor
@@ -74,7 +83,6 @@ export class VendedoresComponent implements OnInit {
         // Refrescar selectpicker bootstrap
         setTimeout(() => {
           $('.selectpicker').selectpicker('refresh');
-          // this.load_js();
         }, 500)
 
       })
@@ -91,38 +99,36 @@ export class VendedoresComponent implements OnInit {
   }
 
   onCheckBoxFiltro() {
-    this.vendedoresFiltrados = this.vendedores;
-
-    // Si solo pin === false, hago filtro de select e input
-    if (!this.soloPin) {
-      this.filtrarSelect();
-    }
-
-    this.filtrarInput();
+    this.filtrar()
+    this.setPage(1);
   }
 
-  filtrar(selector, value) {
+  checkSoloPin() {
+    if (this.soloPin) {
+      this.vendedoresFiltrados = this.vendedores
+        .filter((vendedor) => vendedor.dispositivo_pin !== null && vendedor.dispositivo_pin !== '');
+    } else {
+      this.vendedoresFiltrados = this.vendedores;
+    }
+  }
 
+  filtrar(selector = null, value = null) {
+    this.checkSoloPin();
     // Si es un filtro select se transforma valor a numero
     if (selector === 'bodega_id' || selector === 'vendedor_tipo_id') {
       this.filtrosSelect[selector] = +value;
-    } else {
+    } else if (selector === 'rut' || selector === 'nombre' || selector === 'dispositivo_pin') {
       this.filtrosInput[selector] = value;
     }
-
-    this.vendedoresFiltrados = this.vendedores;
 
     this.filtrarSelect();
 
     this.filtrarInput();
+
+    this.setPage(1);
   }
 
   filtrarSelect() {
-
-    // Si solo pin activado, no se filtran los selects
-    if (this.soloPin) {
-      return;
-    }
 
     for (const filtro in this.filtrosSelect) {
 
@@ -141,20 +147,10 @@ export class VendedoresComponent implements OnInit {
 
   filtrarInput() {
 
-    // Hago una copia para no perder los filtros originales
-    const tmpFiltrosInput: any = {};
-    Object.assign(tmpFiltrosInput, this.filtrosInput);
-
-    // Si solo pin activado, seteo otros filtros a cero
-    if (this.soloPin) {
-      tmpFiltrosInput.nombre = 0;
-      tmpFiltrosInput.rut = 0;
-    }
-
-    for (const filtro in tmpFiltrosInput) {
+    for (const filtro in this.filtrosInput) {
 
       // Si un filtro === 0 significa que no ha sido asignado por usuario y se pasa al siguiente
-      if (tmpFiltrosInput[filtro] === 0) {
+      if (this.filtrosInput[filtro] === 0) {
         continue;
       }
 
@@ -166,7 +162,7 @@ export class VendedoresComponent implements OnInit {
           return 0;
         }
 
-        return (vendedor[filtro].toString().toLowerCase().indexOf(tmpFiltrosInput[filtro]) !== -1)
+        return (vendedor[filtro].toString().toLowerCase().indexOf(this.filtrosInput[filtro]) !== -1)
 
       });
     }
@@ -224,5 +220,18 @@ export class VendedoresComponent implements OnInit {
         }
         this.buttonLock = true;
       });
+  }
+
+
+  setPage(page: number) {
+    if ((page < 1 || page > this.pager.totalPages) && this.pager.totalPages !== 0) {
+      return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.vendedoresFiltrados.length, page);
+
+    // get current page of items
+    this.pagedItems = this.vendedoresFiltrados.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 }

@@ -21,6 +21,7 @@ import { AuthGuard } from './shared/services/auth-guard.service';
 import { VendedorService } from './shared/services/vendedor.service';
 import { VendedorTipoService } from './shared/services/vendedor-tipo.service';
 import { BodegaService } from './shared/services/bodega.service';
+import { PagerService } from './shared/services/pager.service';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { BodegaService } from './shared/services/bodega.service';
         AuthGuard,
         VendedorService,
         BodegaService,
-        VendedorTipoService
+        VendedorTipoService,
+        PagerService
     ],
   bootstrap: [AppComponent]
 })

@@ -16,7 +16,7 @@ export class VendedorService {
     ) { }
 
     getAll(): Observable<Vendedor[]> {
-        return this.apiService.get(`/vendedores`)
+        return this.apiService.get(`/vendedores?per_page=5000`)
             .map(response => {
                 return response.data.vendedores;
             });

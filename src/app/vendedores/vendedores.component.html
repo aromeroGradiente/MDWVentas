@@ -1,5 +1,9 @@
 <article class="content dashboard-page">
 
+  <link 
+    rel="stylesheet" 
+    href="http://gradiente.cl/proyectos/app-ventas/front-mdw-v2/css/hotfix.css">
+  
   <section class="section">
     <div class="row sameheight-container">
 
@@ -36,7 +40,7 @@
               <select class="selectpicker tipo w-100">
                 <option>Todos</option>
                 <option *ngFor="let tipo of vendedoresTipo" [value]="tipo.tipo_id" > 
-                    {{ tipo.nombre }}
+                    {{ tipo.nombre }} - Tipo {{ tipo.tipo_id}}
                 </option>
               </select>
             </div>
@@ -117,7 +121,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let vendedor of vendedoresFiltrados">
+              <tr *ngFor="let vendedor of pagedItems">
 
                 <td data-title=""><a href="informacion-vendedor.php"><i class="fa fa-pencil"></i></a></td>
                 <td data-title="COD.">{{ vendedor.vendedor_id }}</td>
@@ -153,6 +157,24 @@
 
             </tbody>
           </table>
+          <!-- pager -->
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">Primera</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(pager.currentPage - 1)">Anterior</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.currentPage + 1)">Siguiente</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">Última</a>
+                </li>
+            </ul>
         </div>
         <button 
           id="notificar" 
