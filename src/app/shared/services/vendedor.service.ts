@@ -16,11 +16,17 @@ export class VendedorService {
     ) { }
 
     getAll(): Observable<Vendedor[]> {
-        return this.apiService.get(`/vendedores/listado`)
+        return this.apiService.get(`/vendedores`)
             .map(response => {
-                // console.log(response);
-                return response.data.vendedores
+                return response.data.vendedores;
             });
+    }
+
+    actualizarVersion(data): Observable<any> {
+        return this.apiService.post('/vendedores/actualizar', data)
+            .map(response => {
+                return response.data;
+            })
     }
 
 }

@@ -31,11 +31,11 @@ export class UserService {
     // Si JWT detectado traemos información del usuario
     // TODO: traer información usuario
     if (this.jwtService.getToken()) {
-        // this.apiService.get('/user')
-        //  .subscribe(
-        //  data => this.setAuth(data.user),
-        //  err => this.purgeAuth()
-        //  );
+        //  this.apiService.get('/user')
+        //   .subscribe(
+        //   data => this.setAuth(data.user),
+        //   err => this.purgeAuth()
+        //   );
     } else {
         // Remover cualquier remanente de información
       this.purgeAuth();

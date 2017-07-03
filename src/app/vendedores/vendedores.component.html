@@ -75,7 +75,7 @@
                     type="checkbox"
                     name = "soloPin"
                     [(ngModel)]="soloPin"
-                    (change)="onCheckBox()">
+                    (change)="onCheckBoxFiltro()">
                   <span>&nbsp;</span>
                 </label>
               </div>
@@ -84,9 +84,14 @@
         </div>
 
         <div class="w-100 text-right" style="text-align:right">
-          <a id="check-all" href="" data-checked="false" class="btn rounded w-10 btn-primary white mb-2">
+          <button 
+          id="check-all" 
+          href="#" 
+          data-checked="false" 
+          class="btn rounded w-10 btn-primary white mb-2"
+          (click)="onSelectAll()">
             Seleccionar todos
-          </a>
+          </button>
         </div>
 
         <div class="card rounded">
@@ -133,7 +138,12 @@
                   <div class="form-group col-xl-4">
                     <div>
                       <label>
-                        <input class="checkbox" type="checkbox" [checked]="vendedor.actualizar">
+                        <input 
+                          class="checkbox" 
+                          type="checkbox"
+                          id="{{ vendedor.id }}"
+                          [checked]="vendedor.actualizar"
+                          (click)="onCheckBoxActualizar($event)">
                         <span>&nbsp;</span>
                       </label>
                     </div>
@@ -144,9 +154,14 @@
             </tbody>
           </table>
         </div>
-        <a id="notificar" href="" class="btn rounded w-10 btn-primary white">
+        <button 
+          id="notificar" 
+          href="#" 
+          [disabled]="buttonLock"
+          class="btn rounded w-10 btn-primary white"
+          (click)="onNotify()">
           Guardar selección de vendedores a notificar
-        </a>
+        </button>
       </div>
     </div>
   </section>

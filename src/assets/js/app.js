@@ -103,7 +103,7 @@ $(function() {
 //LoginForm validation
 $(function() {
     
-    if ($('#check-all').length > 0) {
+    /*if ($('#check-all').length > 0) {
         $('#check-all').click(function (e) {
             $(this).toggleClass('active');
             e.preventDefault();
@@ -140,7 +140,7 @@ $(function() {
               $('#notificar').addClass('disabled');
             }
         });
-    }
+    }*/
     
     
 	if (!$('#login-form').length) {
