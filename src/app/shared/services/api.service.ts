@@ -54,11 +54,11 @@ export class ApiService {
       .map((res: Response) => res.json());
   }
 
-  post(path: string, body: Object = {}, headers1: Object = {}): Observable<any> {
+  post(path: string, body: Object = {}, headers: Object = {}): Observable<any> {
     return this.http.post(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
-      { headers: new Headers(headers1)}
+      { headers: new Headers(headers)}
     )
       .catch(this.formatErrors)
       .map((res: Response) => res.json());

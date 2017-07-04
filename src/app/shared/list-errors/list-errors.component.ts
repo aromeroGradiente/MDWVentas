@@ -13,17 +13,20 @@ export class ListErrorsComponent {
   set errors(errorList: Errors) {
     this.formattedErrors = [];
 
-    if (Object.keys(errorList.error).length !== 0) {
-      this.formattedErrors.push(errorList.error);
+    if (errorList.error || errorList.errors) {
 
-    }else if (Object.keys(errorList.errors).length !== 0) {
+      if (Object.keys(errorList.error).length !== 0) {
+        this.formattedErrors.push(errorList.error);
 
-      for (const error in errorList.errors) {
-        if (errorList.errors.hasOwnProperty(error)) {
-          this.formattedErrors.push(error);
-        }
-      };
+      } else if (Object.keys(errorList.errors).length !== 0) {
 
+        for (const error in errorList.errors) {
+          if (errorList.errors.hasOwnProperty(error)) {
+            this.formattedErrors.push(error);
+          }
+        };
+
+      }
     }
   };
 
